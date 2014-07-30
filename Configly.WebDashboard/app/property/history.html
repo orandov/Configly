@@ -1,0 +1,48 @@
+﻿<section class="mainbar" data-ng-controller="history as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <button class="btn btn-info btn-lg"
+                        data-ng-click="vm.goBack()">
+                    <i class="fa fa-hand-o-left"></i>Back
+                </button>
+                <div class="btn-group pull-right">
+                    <a class="btn btn-info"
+                       data-ng-click="vm.refresh()"><i class=" fa fa-refresh"></i><span>Refresh</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="widget-content">
+                    <div class="widget-content referrer">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>PropertyId</th>
+                                    <th>User</th>
+                                    <th>Modified Date</th>
+                                    <th>Old Value</th>
+                                    <th>New Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="h in vm.histories">
+                                    <td>
+                                        {{h.propertyId}}
+                                    </td>
+                                    <td>{{h.user}}</td>
+                                    <td>
+                                        {{h.timeStamp}}
+                                    </td>
+                                    <td>
+                                        {{h.oldValue}}
+                                    </td>
+                                    <td>{{ h.newValue}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

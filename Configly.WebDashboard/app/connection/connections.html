@@ -1,0 +1,55 @@
+﻿<section class="mainbar" data-ng-controller="connections as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="form-search">
+                    <input class="input-lg search-query"
+                           data-ng-model="vm.connectionSearch"
+                           data-ng-keyup="vm.search($event)"
+                           placeholder="search..." />
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-info"
+                           data-ng-click="vm.refresh()"><i class=" fa fa-refresh"></i><span>Refresh</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="widget wviolet">
+                    <div data-cc-widget-header title="{{vm.title}}"
+                         subtitle="{{vm.filteredConnections.length}} / {{vm.connections.length}}"></div>
+                    
+                    <div class="widget-content">
+                        <div class="widget-content referrer">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Machine</th>
+                                        <th>IP</th>
+                                        <th>Setting</th>
+                                        <th>Scope</th>
+                                        <th>Last Connection</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="c in vm.filteredConnections">
+                                        <td>{{c.machineName}}
+                                        </td>
+                                        <td>{{c.ip}}</td>
+                                        <td>
+                                           {{c.t}}
+                                        </td>
+                                        <td>
+                                            {{c.scope}}
+                                        </td>
+                                        <td>{{ c.timeStamp | fromNow }} ({{c.timeStamp | date:'medium'}})</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

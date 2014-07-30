@@ -1,0 +1,70 @@
+﻿<section id="setting-view" class="mainbar" data-ng-controller="settingdetail as vm">
+    <section class="matter">
+        <div class="container">
+            <div>
+                <button class="btn btn-info btn-lg"
+                        data-ng-click="vm.goBack()">
+                    <i class="fa fa-hand-o-left"></i>Back
+                </button>
+                <button class="btn btn-info btn-lg"
+                        data-ng-click="vm.cancel()" data-ng-disabled="!vm.canSave">
+                    <i class="fa fa-undo"></i>Cancel
+                </button>
+                <button class="btn btn-info btn-lg"
+                        data-ng-click="vm.save()" data-ng-disabled="!vm.canSave">
+                    <i class="fa fa-save"></i>Save
+                </button>
+
+                <!--Need ng-hide for show/hide animations-->
+                <span data-ng-show="vm.hasChanges" class="dissolve-animation ng-hide flag-haschanges">
+                    <i class="fa fa-asterisk fa fa-asterisk-large" rel="tooltip" title="You have changes"></i>
+                </span>
+            </div>
+
+
+            <div class="widget wviolet">
+                <div data-cc-widget-header title="{{vm.setting.name}}"></div>
+                <div class="widget-content">
+                    <div class="widget-content referrer">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Key</th>
+                                    <th>Value</th>
+                                    <th>Scope</th>
+                                    <th>Description</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="p in vm.setting.properties">
+                                    <td>
+                                        <a ng-href="#/property/override/{{p.propertyId}}" title="Override Property (Coming Soon)" >
+                                            <i class="fa fa-files-o fa-2x"></i>
+                                        </a>
+                                        <a ng-href="#/property/history/{{p.propertyId}}" title="View History (Coming Soon)" >
+                                            <i class="fa fa-history fa-2x"></i>
+                                        </a>
+                                    </td>
+                                    <td>{{p.key}}</td>
+                                    <td>
+                                        <input class="form-control"
+                                               data-ng-model="p.value"
+                                               placeholder="value..." />
+                                    </td>
+                                    <td>
+                                        {{p.scope}}
+                                    </td>
+                                    <td>{{p.description}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

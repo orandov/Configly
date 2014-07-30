@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Spin.js</id>
+    <version>2.0</version>
+    <title>Spin.js</title>
+    <authors>fgnass</authors>
+    <owners>fgnass</owners>
+    <projectUrl>http://fgnass.github.com/spin.js/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package for Spin.js "An animated CSS3 loading spinner with VML fallback for IE."</description>
+    <summary>Spin.js javascript library taken from http://fgnass.github.com/spin.js/</summary>
+    <tags>spinner spin.js</tags>
+  </metadata>
+</package>

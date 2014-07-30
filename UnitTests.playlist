@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="SD.Infra.AppConfig.Services.Tests.SettingsServiceTests.Get_InvokeMethod_ReturnsSettings" /><Add Test="SD.Infra.AppConfig.Services.Tests.SettingsServiceTests.Get_BadArguements_ThrowsFaultException" /><Add Test="SD.Infra.AppConfig.Services.Tests.SettingsServiceTests.Get_WithValidArguements_ReturnsSettings" /></Playlist>

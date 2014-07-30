@@ -1,0 +1,42 @@
+﻿<section class="mainbar" data-ng-controller="settings as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="form-search">
+                    <input class="input-lg search-query"
+                           data-ng-model="vm.settingSearch"
+                           data-ng-keyup="vm.search($event)"
+                           placeholder="search..." />
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-info"
+                           data-ng-click="vm.refresh()"><i class=" fa fa-refresh"></i><span>Refresh</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="widget wviolet">
+                    <div data-cc-widget-header title="{{vm.title}}"
+                         subtitle="{{vm.filteredSettings.length}} / {{vm.settings.length}}"></div>
+                    <div class="widget-content user">
+                        <div class="padd panel panel-default" data-ng-repeat="s in vm.filteredSettings"
+                             data-ng-click="vm.gotoSetting(s)">
+                            <div class=" user" title="Go to setting details">
+                            <div class="pull-left"><i class="fa fa-cogs" style="font-size: 5em;"></i></div>
+                            <div class="user-details">
+
+                                <h3>{{s.name}}</h3>
+                                <h5>Scopes: {{s.scopes ? s.scopes:"n/a"}}</h5>
+                                <small class="text-subtle"> {{s.properties.length}} properties</small>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="widget-foot">
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
