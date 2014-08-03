@@ -5,7 +5,7 @@ using Configly.Store.Entities;
 
 namespace Configly.Store.Tests
 {
-    [TestClass]
+    [TestClass, Ignore]
     public class SettingsStoreIntegrationTests
     {
         [TestMethod]

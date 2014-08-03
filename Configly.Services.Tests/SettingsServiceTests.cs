@@ -1,32 +1,29 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FakeItEasy;
-using Configly.DAL;
-using FluentAssertions;
-using System.ServiceModel;
+﻿using System.Collections.ObjectModel;
 using Configly.DAL.Interfaces;
 using Configly.Entities;
-using System.Linq;
+using FakeItEasy;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Configly.Services.Tests
 {
     /// <summary>
-    /// Summary description for UnitTest1
+    ///     Summary description for UnitTest1
     /// </summary>
     [TestClass]
     public class SettingsServiceTests
     {
-        static string _defaultScopeName = string.Empty;
-        static string _dummyJsonValue = "{Hello:IamJson}";
-        static string _dummyTName = "testTName";
+        private static readonly string _defaultScopeName = string.Empty;
+        private static string _dummyJsonValue = "{Hello:IamJson}";
+        private static string _dummyTName = "testTName";
+
         private static Setting GetSettings()
         {
             return new Setting
             {
+                Name = _dummyTName,
+                Properties = new Collection<Property>()
             };
-
         }
 
         [TestMethod]
@@ -34,16 +31,21 @@ namespace Configly.Services.Tests
         {
             var settingsRepository = A.Fake<ISettingsRepository>();
             var propRepository = A.Fake<IPropertiesRepository>();
-            var expected = GetSettings();
+            Setting expectedSetting = GetSettings();
+            var expectedResponse = new GetSettingsResponse
+            {
+                Setting = expectedSetting,
+                WereSettingsAdded = false
+            };
 
-            A.CallTo(() => settingsRepository.Get(_dummyTName, _defaultScopeName)).Returns<Setting>(expected);
+            A.CallTo(() => settingsRepository.Get(_dummyTName, _defaultScopeName)).Returns(expectedSetting);
 
             var service = new SettingsService(propRepository, settingsRepository);
-            var request = new GetSettingsRequest { Setting = expected };
+            var request = new GetSettingsRequest {Setting = expectedSetting, Scope = _defaultScopeName};
 
-            var actual = service.GetAndUpdate(request);
+            GetSettingsResponse actual = service.GetAndUpdate(request);
 
-            actual.ShouldBeEquivalentTo(expected);
+            actual.ShouldBeEquivalentTo(expectedResponse);
         }
 
         //[TestMethod]

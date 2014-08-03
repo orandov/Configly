@@ -2,7 +2,7 @@
 
 namespace Configly.TestClientApp
 {
-    public class BlotterSettings
+    public class AppSettings
     {
         [DisplayName("Application Version"), DefaultValue(6.9)]
         public double ApplicationVersion { get; set; }
