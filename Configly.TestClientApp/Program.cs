@@ -29,7 +29,7 @@ namespace Configly.TestClientApp
 
             if (application == "1")
             {
-                var store = new SettingsStore<BlotterSettings>(config, tracking);
+                var store = new SettingsStore<AppSettings>(config, tracking);
                 store.OnRefresh += store_OnRefresh;
 
                 WriteSettingsToConsole("Initial", store.Get());
