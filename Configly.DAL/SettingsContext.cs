@@ -18,7 +18,7 @@ namespace Configly.DAL
         }
 
         public SettingsContext()
-            : base("Settings")
+            : base("Configly")
         {
 
         }
